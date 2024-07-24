@@ -16,7 +16,7 @@ cursor = db.cursor()
 
 base_path = os.path.dirname(__file__)
 homework_path = os.path.dirname(os.path.dirname(base_path))
-destination_path = os.path.join(homework_path, "HOMEwork", "hw_data", "data.csv")
+destination_path = os.path.join(homework_path, "homework", "hw_data", "data.csv")
 
 
 with open(destination_path, "r", newline="") as data_file:

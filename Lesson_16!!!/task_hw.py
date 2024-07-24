@@ -20,7 +20,7 @@ cursor = db.cursor()  # Создаем курсор для выполнения 
 # Определяем путь к файлу CSV
 base_file = os.path.dirname(__file__)  # Получаем путь к текущему файлу
 start = os.path.dirname(os.path.dirname(base_file))  # Получаем путь к папке на уровень выше
-data_text = os.path.join(start, "HOMEwork", "hw_data", "data.csv")  # Определяем путь к CSV файлу
+data_text = os.path.join(start, "homework", "hw_data", "data.csv")  # Определяем путь к CSV файлу
 
 
 with open(data_text, "r", newline="") as data_file:  # Открываем CSV файл в режиме чтения
