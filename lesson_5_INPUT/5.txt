@@ -1,0 +1,182 @@
+Распаковка
+Используется для того, чтобы распределить элементы коллекции (список, словарь, множество, кортеж) по отдельным переменным.
+Используется только в ситуациях, когда вы наверняка знаете количество элементов, содержащихся в коллекции.
+
+[7]
+my_list = [1, 3]
+my_tuple = (2, 6, 9)
+# a = my_list[0]
+# b = my_list[1]
+# c = my_tuple[0]
+# d = my_tuple[1]
+# e = my_tuple[2]
+a, b = my_list
+c, d, e = my_tuple
+print(a, b, c, d, e)
+1 3 2 6 9
+
+Срез
+Извлечение среза позволяет взять из списка определенную его часть
+
+[17]
+lll = [1, 3, 5, 2, 5, 7 ,1, 3]
+print(lll)
+print(lll[1:4])
+print(lll[:4])
+print(lll[3:])
+print(lll[1::2])
+print(lll[:])
+print(lll[::-1])
+print(lll[::-2])
+print(lll[-2:-6:-1])
+[1, 3, 5, 2, 5, 7, 1, 3]
+[3, 5, 2]
+[1, 3, 5, 2]
+[2, 5, 7, 1, 3]
+[3, 2, 7, 3]
+[1, 3, 5, 2, 5, 7, 1, 3]
+[3, 1, 7, 5, 2, 5, 3, 1]
+[3, 7, 2, 3]
+[1, 7, 5, 2]
+
+Методы строк
+Со строкой можно делать многое из того, что можно делать с другими коллекциями, т.к. строка это по сути тоже коллекция - последовательность символов. Больше всего функциональность строки похожа на функциональность кортежей.
+
+[38]
+text = 'my long long string'
+print(text[3])
+print(len(text))
+print(text.index('long'))
+print('long' in text)
+print(text.count('n'))
+print(text.count('long'))
+print(text.find('lone'))
+print(text[:7])
+print(text.startswith('my'))
+print(text.endswith('string'))
+l
+19
+3
+True
+3
+2
+-1
+my long
+True
+True
+
+[39]
+txt = "ThIs tExt wiTh meSsEd uP CaPITalIZatiOn!"
+print(txt.capitalize()) # Делает первую букву предложения заглавной
+print(txt.title())  # Делает каждую первую букву заглавной
+print(txt.upper())  # Делает все буквы большими
+print(txt.lower())  # Делает все буквы маленькими
+This text with messed up capitalization!
+This Text With Messed Up Capitalization!
+THIS TEXT WITH MESSED UP CAPITALIZATION!
+this text with messed up capitalization!
+
+[45]
+text = 'mY lOng loNg STRING'
+string_index = text.lower().index('string')
+print(text[:string_index].lower() + text[string_index:].upper())
+my long long STRING
+
+[47]
+msg = 'Hello world!'
+msg = msg.replace('world', 'universe')
+print(msg)
+Hello universe!
+
+[48]
+data = '12,3'
+data = data.replace(',', '.')
+print(data)
+12.3
+
+[56]
+txt = ' admin '
+# txt = txt.replace(' ', '')
+# txt = txt.strip()
+# txt = txt.lstrip()
+txt = txt.rstrip()
+print(txt)
+text = '"name"'
+text = text.strip('"')
+print(text)
+ admin
+name
+
+Строка ←→ список
+[58]
+my_string = 'some little text'
+my_string2 = 'some,little,text'
+list_from_text = my_string.split()
+list_from_text2 = my_string2.split(',')
+print(list_from_text)
+print(list_from_text2)
+['some', 'little', 'text']
+['some', 'little', 'text']
+
+[62]
+languages = ['Python', 'Java', 'Ruby']
+print(languages)
+# languages = ', '.join(languages)
+print(languages)
+print('Student knows these languages:', ', '.join(languages))
+
+['Python', 'Java', 'Ruby']
+['Python', 'Java', 'Ruby']
+Student knows these languages: Python, Java, Ruby
+
+Форматирование строки
+[76]
+a = 'one'
+b = 'two'
+print('First word is', a, ', second word is', b)
+
+
+my_text = 'First word is ' + a + ', second word is ' + b
+print(my_text)
+
+my_text = 'First word is %s, second word is %s'
+print(my_text % (a, b))
+
+#string format
+my_text = 'First word is {}, second word is {}'
+print(my_text.format(a, b))
+
+my_text = 'First word is {1}, second word is {0}'
+print(my_text.format(a, b))
+
+#f-string
+my_text = f'First word is {{a}}, second word is {b}'
+print(my_text)
+First word is one , second word is two
+First word is one, second word is two
+First word is one, second word is two
+First word is one, second word is two
+First word is two, second word is one
+First word is {a}, second word is two
+
+[75]
+template = 'Hello, {0}!'
+# print(f'Hello, {username}!')
+username = input('What is your name?')
+
+print(template.format(username))
+Hello, Tom!
+Hello, Tim!
+
+[86]
+a = 'qwe'
+b = 'asd'
+
+my_text = 'First word is {{}}, second word is {}'
+print_text = my_text.format(b)
+print(print_text)
+
+print(print_text.format('qqqqq'))
+First word is {}, second word is asd
+First word is qqqqq, second word is asd
+
