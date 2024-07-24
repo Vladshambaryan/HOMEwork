@@ -1,0 +1,5 @@
+Mag1:Minsk
+sport:Moscow
+bread:Brest
+products:Brest
+milk:Minsk
