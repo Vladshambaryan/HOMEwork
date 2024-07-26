@@ -39,7 +39,7 @@ def create_one_gadget():
         headers=headers
     )
     try:
-        assert response.status_code == 200, "Status code isn't correct"
+        assert response.status_code == 200
         print('Create test Passed')
     except NameError:
         print('Create test Failed')
@@ -64,7 +64,7 @@ def update_one_gadget():
         headers=headers
     ).json()
     try:
-        assert response["data"]["color"] == "silver", "The color isn't exist"
+        assert response["data"]["color"] == "silver"
         print('Update test Passed')
     except NameError:
         print('Update test Failed')
