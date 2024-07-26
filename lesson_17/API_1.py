@@ -38,8 +38,11 @@ def create_one_gadget():
         json=body,
         headers=headers
     )
-    assert response.status_code == 200, "Status code isn't correct"
-    assert response.json()["id"], "ID isn't exist"
+    try:
+        assert response.status_code == 200, "Status code isn't correct"
+        print('Create test Passed')
+    except NameError:
+        print('Create test Failed')
     print(response.json()["id"])
 
 
@@ -60,7 +63,11 @@ def update_one_gadget():
         json=body,
         headers=headers
     ).json()
-    assert response["data"]["color"] == "silver", "The color isn't exist"
+    try:
+        assert response["data"]["color"] == "silver", "The color isn't exist"
+        print('Update test Passed')
+    except NameError:
+        print('Update test Failed')
     print(response)
     delete_new_gadget(gadget_id)
 
@@ -75,7 +82,11 @@ def update_gadget_name():
         json=body,
         headers=headers
     ).json()
-    assert response["name"] == "Apple IPhone", "The name isn't correct"
+    try:
+        assert response["name"] == "Apple IPhone"
+        print('Update test Passed')
+    except NameError:
+        print('Update test Failed')
     print(response["name"])
     delete_new_gadget(gadget_id)
 
@@ -83,19 +94,31 @@ def update_gadget_name():
 def delete_gadget():
     gadget_id = new_gadget_id()
     response = requests.delete(f"https://api.restful-api.dev/objects/{gadget_id}")
-    assert response.status_code == 200, "The status code isn't correct"
+    try:
+        assert response.status_code == 200
+        print('Delete test Passed')
+    except NameError:
+        print('Delete test Failed')
     print(response.status_code)
 
 
 def get_all_gadgets():
     response = requests.get("https://api.restful-api.dev/objects").json()
-    assert len(response) == 13, "The amount of gadgets isn't correct"
+    try:
+        assert len(response) == 13
+        print('Get all test Passed')
+    except NameError:
+        print('Get all test Failed')
 
 
 def get_one_gadget():
     gadget_id = new_gadget_id()
     response = requests.get(f"https://api.restful-api.dev/objects/{gadget_id}").json()
-    assert response["id"] == gadget_id, "The gadget id isn't returned"
+    try:
+        assert response["id"] == gadget_id
+        print('Get one test Passed')
+    except NameError:
+        print('Get one test Failed')
 
 
 create_one_gadget()

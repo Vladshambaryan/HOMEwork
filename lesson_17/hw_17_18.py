@@ -16,6 +16,11 @@ def add_object():  # Функция для создания нового объ�
         json=body,  # Передаем тело запроса в формате JSON
         headers=headers  # Передаем заголовки запроса
     )
+    try:
+        assert response.status_code == 200  # Проверяем, что код ответа 200
+        print('Add test Passed')
+    except NameError:
+        print('Add test Failed')
     assert response.status_code == 200  # Проверяем, что код ответа 200
 
 def object_id():  # Функция для получения ID нового объекта
@@ -57,7 +62,11 @@ def update_object():  # Функция для обновления данных 
         json=body,  # Передаем тело запроса в формате JSON
         headers=headers  # Передаем заголовки запроса
     ).json()
-    assert response["data"]["color"] == "silver", "Цвет не существует"  # Проверяем, что цвет обновлен правильно
+    try:
+        assert response["data"]["color"] == "silver" # Проверяем, что цвет обновлен правильно
+        print('Update test Passed')
+    except NameError:
+        print('Update test Failed')
     print(response)  # Выводим обновленные данные объекта
     delete_object_id(gadget_id)  # Удаляем объект после тестирования
 
@@ -72,14 +81,22 @@ def update_object_name():  # Функция для обновления имен
         json=body,  # Передаем тело запроса в формате JSON
         headers=headers  # Передаем заголовки запроса
     ).json()
-    assert response["name"] == "Apple MacBook Pro 16 (Updated Name)"  # Проверяем, что имя обновлено правильно
+    try:
+        assert response["name"] == "Apple MacBook Pro 16 (Updated Name)"  # Проверяем, что имя обновлено правильно
+        print('Update test Passed')
+    except NameError:
+        print('Update test Failed')
     print(response["name"])  # Выводим обновленное имя объекта
     delete_object_id(gadget_id)  # Удаляем объект после тестирования
 
 def delete_object():  # Функция для удаления объекта
     gadget_id = object_id()  # Получаем ID нового объекта
     response = requests.delete(f"https://api.restful-api.dev/objects/{gadget_id}")  # Выполняем DELETE-запрос для удаления объекта
-    assert response.status_code == 200  # Проверяем, что код ответа 200
+    try:
+        assert response.status_code == 200  # Проверяем, что код ответа 200
+        print('Delete test Passed')
+    except NameError:
+        print('Delete test Failed')
     print(response.status_code)  # Выводим код ответа
 
 add_object()  # Создаем новый объект

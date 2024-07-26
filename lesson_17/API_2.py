@@ -13,7 +13,11 @@ def post_test():
     }
     headers = {'Content-type': 'application/json; charset=UTF-8'}
     response = requests.post('https://api.restful-api.dev/objects', json=body, headers=headers)
-    assert response.status_code == 200
+    try:
+        assert response.status_code == 200
+        print('Update test Passed')
+    except NameError:
+        print('Update test Failed')
     print(response.status_code)
 
 
@@ -51,10 +55,15 @@ def update():
     }
     headers = {"Content_Type": "application/json"}
     response = requests.put(f"https://api.restful-api.dev/objects/{gadjet_id}", json=body, headers=headers).json()
-    assert response["data"]["year"] == 2019," цвет не существует"
-    assert response["data"]["price"] == 2049.99," цвет не существует"
-    assert response["data"]["CPU model"] == "Intel Core i9"," цвет не существует"
-    assert response["data"]["color"] == "silver"," цвет не существует"
+    try:
+        assert response["data"]["color"] == "silver"
+        print('Update test Passed')
+    except NameError:
+        print('Update test Failed')
+    assert response["data"]["year"] == 2019
+    assert response["data"]["price"] == 2049.99
+    assert response["data"]["CPU model"] == "Intel Core i9"
+    assert response["data"]["color"] == "silver"
     assert response["name"] == "Apple MacBook Pro 16"
     print(response)
     delete_new_id(gadjet_id)
@@ -71,7 +80,11 @@ def update_object_name():  # Функция для обновления имен
         json=body,  # Передаем тело запроса в формате JSON
         headers=headers  # Передаем заголовки запроса
     ).json()
-    assert response["name"] == "Apple MacBook Pro 16 (Updated Name)"  # Проверяем, что имя обновлено правильно
+    try:
+        assert response["name"] == "Apple MacBook Pro 16 (Updated Name)"  # Проверяем, что имя обновлено правильно
+        print('Update test Passed')
+    except NameError:
+        print('Update test Failed')
     print(response["name"])  # Выводим обновленное имя объекта
     delete_new_id(gadget_id)  # Удаляем объект после тестирования
 
